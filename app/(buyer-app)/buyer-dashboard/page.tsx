@@ -7,15 +7,15 @@ export default function BuyerDashboard() {
     <div className="max-w-6xl mx-auto space-y-6">
       <header className="flex justify-between items-center">
         <div>
-          <h1 className="text-3xl font-bold">Client Dashboard</h1>
-          <p className="text-muted-foreground">Manage your job postings and hires.</p>
+          <h1 className="text-3xl font-bold">Buyer Dashboard</h1>
+          <p className="text-muted-foreground">Manage your designs and proposals.</p>
         </div>
         <Button className="gap-2">
-          <PlusCircle className="w-4 h-4" /> Post a New Job
+          <PlusCircle className="w-4 h-4" /> Post a New Design
         </Button>
       </header>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {/* <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         <Card>
           <CardHeader><CardTitle className="text-sm font-medium">Active Jobs</CardTitle></CardHeader>
           <CardContent><p className="text-2xl font-bold">3</p></CardContent>
@@ -38,7 +38,7 @@ export default function BuyerDashboard() {
             <p>You haven't posted any jobs yet.</p>
           </div>
         </CardContent>
-      </Card>
+      </Card> */}
     </div>
   );
 }

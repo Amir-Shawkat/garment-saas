@@ -19,7 +19,7 @@ export default function Navbar() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold text-primary tracking-tighter">
-          MarketPlace
+          <p>G<span className="text-cyan-500">S</span></p>
         </Link>
 
         {/* Desktop Links */}

@@ -5,8 +5,8 @@ export default function SellerDashboard() {
   return (
     <div className="max-w-6xl mx-auto space-y-6">
       <header>
-        <h1 className="text-3xl font-bold">Freelancer Dashboard</h1>
-        <p className="text-muted-foreground">Welcome back! Here's what's happening with your projects.</p>
+        <h1 className="text-3xl font-bold">Factory Dashboard</h1>
+        <p className="text-muted-foreground">Welcome back! Here&apos;s what&apos;s happening with your projects.</p>
       </header>
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
@@ -16,7 +16,7 @@ export default function SellerDashboard() {
         </Card>
         {/* Add more stat cards here */}
       </div>
-
+{/* 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <div className="lg:col-span-2 space-y-4">
           <h3 className="text-xl font-semibold">Recommended for you</h3>
@@ -53,7 +53,7 @@ export default function SellerDashboard() {
             </CardContent>
           </Card>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

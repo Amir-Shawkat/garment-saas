@@ -19,7 +19,7 @@ export default function BuyerSignup() {
 
   return (
 
-    <div className="flex items-center justify-center bg-gray-900 min-h-screen">
+    <div className="flex items-center justify-center bg-neutral-900 min-h-screen">
         <div className="max-w-md mx-auto p-6 bg-white rounded-lg shadow-md">
             <h2 className="text-2xl font-bold mb-4">Sign up to hire talent</h2>
             <Button variant="outline" className="w-full mb-4">Continue with Google</Button>
