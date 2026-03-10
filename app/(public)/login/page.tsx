@@ -20,14 +20,13 @@ export default function LoginPage() {
   const onSubmit = (values: any) => {
     console.log("Login Data Sent to 'Backend':", values);
 
-    // MOCK LOGIC: 
-    // In a real app, your API would return: { user: { role: 'buyer' } }
+    
     if (values.email.includes("buyer")) {
       router.push("/buyer-dashboard");
     } else if (values.email.includes("seller")) {
       router.push("/seller-dashboard");
     } else {
-      // Simulate an error if email doesn't contain 'buyer' or 'seller'
+
       form.setError("root", { 
         message: "Invalid credentials. Use 'buyer@test.com' or 'seller@test.com' for this demo." 
       });

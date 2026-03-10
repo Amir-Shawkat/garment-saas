@@ -7,8 +7,10 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useRouter } from "next/navigation";
 
 export default function SellerSignup() {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(SellerSchema),
     defaultValues: {
@@ -23,9 +25,10 @@ export default function SellerSignup() {
   });
 
   const onSubmit = (values: any) => {
-    // This is the object you will eventually send to your API
+    // This is the object that will eventually send to the API
     console.log("SUCCESS! Seller Object Generated:", values);
     alert("Form submitted successfully! Check console for the object.");
+    router.push("/login");
   };
 
   return (
@@ -48,28 +51,67 @@ export default function SellerSignup() {
                 )} />
             </div>
 
-            <FormField control={form.control} name="location" render={({ field }) => (
-                <FormItem><FormLabel>Location</FormLabel><FormControl><Input placeholder="e.g. New York, USA" {...field} /></FormControl><FormMessage /></FormItem>
-            )} />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                <FormField control={form.control} name="location" render={({ field }) => (
+                    <FormItem><FormLabel>Location</FormLabel><FormControl><Input placeholder="e.g. New York, USA" {...field} /></FormControl><FormMessage /></FormItem>
+                )} />
+
+                <FormField
+                    control={form.control}
+                    name="certification"
+                    render={({ field: { value, onChange, ...fieldProps } }) => (
+                        <FormItem>
+                        <FormLabel>Factory Certification (PDF/Doc)</FormLabel>
+                        <FormControl>
+                            <Input
+                            type="file"
+                            accept=".pdf,.doc,.docx"
+                            onChange={(event) => {
+                                const file = event.target.files?.[0];
+                                onChange(file); // Send the file object to React Hook Form
+                            }}
+                            {...fieldProps}
+                            />
+                        </FormControl>
+                        <FormMessage />
+                        </FormItem>
+                    )}
+                    />
+            </div>
+
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <FormField control={form.control} name="category" render={({ field }) => (
+                <FormField control={form.control} name="factorycategory" render={({ field }) => (
                 <FormItem>
-                    <FormLabel>Work Category</FormLabel>
+                    <FormLabel>Factory Category</FormLabel>
                     <Select onValueChange={field.onChange} defaultValue={field.value}>
-                    <FormControl><SelectTrigger><SelectValue placeholder="Select a category" /></SelectTrigger></FormControl>
+                    <FormControl><SelectTrigger><SelectValue placeholder="Select Factory Category" /></SelectTrigger></FormControl>
                     <SelectContent>
-                        <SelectItem value="tech">Technology</SelectItem>
-                        <SelectItem value="marketing">Marketing</SelectItem>
-                        <SelectItem value="design">Design</SelectItem>
+                        <SelectItem value="apparel">Apparel</SelectItem>
+                        <SelectItem value="sportswear">Sportswear/Activewear</SelectItem>
+                        <SelectItem value="home-textiles">Home Textiles</SelectItem>
+                        <SelectItem value="knitted-goods">Knitted Goods</SelectItem>
                     </SelectContent>
                     </Select>
                     <FormMessage />
                 </FormItem>
                 )} />
 
-                <FormField control={form.control} name="experience" render={({ field }) => (
-                <FormItem><FormLabel>Experience Level</FormLabel><FormControl><Input placeholder="e.g. 5 years" {...field} /></FormControl><FormMessage /></FormItem>
+                <FormField control={form.control} name="fabrictype" render={({ field }) => (
+                <FormItem>
+                    <FormLabel>Fabric Type</FormLabel>
+                    <Select onValueChange={field.onChange} defaultValue={field.value}>
+                    <FormControl><SelectTrigger><SelectValue placeholder="Select Fabric Type" /></SelectTrigger></FormControl>
+                    <SelectContent>
+                        <SelectItem value="cotton">Cotton/Natural Fiber Mills</SelectItem>
+                        <SelectItem value="polyester">Polyester/Synthetic Mills</SelectItem>
+                        <SelectItem value="wool">Wool</SelectItem>
+                        <SelectItem value="silk">Silk</SelectItem>
+                    </SelectContent>
+                    </Select>
+                    <FormMessage />
+                </FormItem>
                 )} />
             </div>
 

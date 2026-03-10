@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 const navLinks = [
-  { name: "Home", href: "/" },
+  { name: "Home", href: "/#home" },
   { name: "About", href: "/#about" },
   { name: "Contact", href: "/#contact" },
 ];
@@ -18,7 +18,7 @@ export default function Navbar() {
     <nav className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/60">
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         {/* Logo */}
-        <Link href="/" className="text-2xl font-bold text-primary tracking-tighter">
+        <Link href="/#home" className="text-2xl font-bold text-primary tracking-tighter">
           <p>G<span className="text-cyan-500">S</span></p>
         </Link>
 

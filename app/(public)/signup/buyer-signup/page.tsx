@@ -5,8 +5,10 @@ import { BuyerSchema } from "@/lib/validations/auth";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 export default function BuyerSignup() {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(BuyerSchema),
     defaultValues: { name: "", organization: "", email: "", password: "", confirmPassword: "" }
@@ -14,6 +16,8 @@ export default function BuyerSignup() {
 
   const onSubmit = (values: any) => {
     console.log("Buyer Data Object:", values);
+    alert("Form submitted successfully! Check console for the object.");
+    router.push("/login");
   };
 
 
@@ -36,7 +40,6 @@ export default function BuyerSignup() {
                 <FormField control={form.control} name="email" render={({ field }) => (
                     <FormItem><FormLabel>Email</FormLabel><FormControl><Input type="email" {...field} /></FormControl><FormMessage /></FormItem>
                     )} />
-                {/* ... Add Email, Password, Confirm Password fields similarly ... */}
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border-t pt-6">
                     <FormField control={form.control} name="password" render={({ field }) => (
